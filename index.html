@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>I Miss You So Much ❤️</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Playfair Display (Classy Serif) & Outfit (Sleek Sans-serif) -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --glass-bg: rgba(255, 255, 255, 0.25);
+            --glass-shadow: 0 30px 60px -12px rgba(200, 50, 120, 0.25);
+            --glass-inner-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), inset 0 -1px 1px rgba(255, 255, 255, 0.1);
+            --primary-text: #4a044e; /* Deep berry */
+            --accent-text: #e11d48; /* Vibrant Rose */
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #fff0f5;
+            min-height: 100vh;
+            min-height: 100dvh;
+            overflow-x: hidden;
+            margin: 0;
+            color: var(--primary-text);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        h1, h2, h3, .serif-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Ambient Animated Aura Background */
+        .ambient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -2;
+            background: #fff0f5;
+            overflow: hidden;
+        }
+
+        .blob {
+            position: absolute;
+            filter: blur(80px);
+            opacity: 0.7;
+            animation: drift 15s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
+        }
+
+        .blob-1 {
+            width: 60vw; height: 60vw;
+            background: radial-gradient(circle, #fca5a5 0%, transparent 70%);
+            top: -10%; left: -10%;
+        }
+
+        .blob-2 {
+            width: 70vw; height: 70vw;
+            background: radial-gradient(circle, #e9d5ff 0%, transparent 70%);
+            bottom: -20%; right: -10%;
+            animation-delay: -5s;
+        }
+
+        .blob-3 {
+            width: 50vw; height: 50vw;
+            background: radial-gradient(circle, #fbcfe8 0%, transparent 70%);
+            top: 40%; left: 30%;
+            animation-duration: 20s;
+        }
+
+        @keyframes drift {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(10%, 15%) scale(1.1); }
+            100% { transform: translate(-5%, 5%) scale(0.95); }
+        }
+
+        /* Premium 3D Glassmorphism */
+        .glass-premium {
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow), var(--glass-inner-shadow);
+            border-radius: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Subtle diagonal shine overlay on glass */
+        .glass-premium::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
+            transform: skewX(-20deg);
+            animation: shine 6s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            20% { left: 200%; }
+            100% { left: 200%; }
+        }
+
+        /* Cinematic Animations */
+        .screen {
+            display: none;
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+            min-height: 100dvh;
+            width: 100%;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px) scale(0.98);
+        }
+
+        .screen.active {
+            display: flex;
+            animation: cinematicReveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .screen.fade-out {
+            animation: cinematicHide 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes cinematicReveal {
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes cinematicHide {
+            to { opacity: 0; transform: translateY(-20px) scale(0.98); }
+        }
+
+        /* Staggered Text Animations */
+        .stagger-text {
+            opacity: 0;
+            transform: translateY(15px);
+            animation: fadeUpText 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeUpText {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Gradient Text Utility */
+        .text-gradient {
+            background: linear-gradient(135deg, #e11d48, #c026d3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Premium Glowing Buttons */
+        .btn-premium {
+            background: linear-gradient(135deg, #fb7185, #d946ef);
+            color: white;
+            box-shadow: 0 10px 25px -5px rgba(217, 70, 239, 0.5), inset 0 1px 1px rgba(255,255,255,0.4);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-premium:active {
+            transform: scale(0.95);
+            box-shadow: 0 5px 15px -5px rgba(217, 70, 239, 0.4);
+        }
+
+        /* Polished Polaroid Images */
+        .polaroid {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 12px 12px 32px 12px;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px -10px rgba(100, 20, 50, 0.15), inset 0 1px 0 white;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .polaroid:active {
+            transform: scale(1.05) rotate(0deg) !important;
+            z-index: 20;
+        }
+
+        /* Sleek 3D Flip Cards */
+        .flip-card {
+            background-color: transparent;
+            perspective: 1500px;
+            -webkit-perspective: 1500px;
+            cursor: pointer;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+        }
+
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+            -webkit-transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+        }
+
+        .flip-card-back {
+            transform: rotateY(180deg);
+            -webkit-transform: rotateY(180deg);
+            background: linear-gradient(135deg, rgba(255, 240, 245, 0.95), rgba(255, 235, 240, 0.8));
+            border: 1px solid rgba(251, 207, 232, 0.8);
+        }
+
+        /* Organic Heartbeat */
+        .heartbeat {
+            animation: organicHeartbeat 1.8s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+            filter: drop-shadow(0 0 40px rgba(225, 29, 72, 0.5));
+        }
+
+        @keyframes organicHeartbeat {
+            0% { transform: scale(1); }
+            15% { transform: scale(1.15); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.15); }
+            60%, 100% { transform: scale(1); }
+        }
+
+        /* Particle specifics */
+        #particles-container {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            bottom: -50px;
+            pointer-events: auto;
+            cursor: pointer;
+            animation: floatUp linear infinite;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s;
+            touch-action: manipulation;
+            font-size: 1.5rem;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg) scale(0.8); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-110vh) rotate(180deg) scale(1.2); opacity: 0; }
+        }
+
+        /* Typing cursor */
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s step-end infinite;
+            color: #fb7185;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+        
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            z-index: 50;
+            animation: fall linear forwards;
+        }
+        @keyframes fall {
+            to { transform: translateY(105vh) rotate(720deg); }
+        }
+    </style>
+</head>
+<body class="selection:bg-pink-300 selection:text-pink-900">
+
+    <!-- Ambient Aura -->
+    <div class="ambient-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- AUDIO ELEMENT -->
+    <audio id="bg-music" src="miss-you.mp3" loop preload="auto"></audio>
+
+    <!-- FLOATING MUSIC TOGGLE -->
+    <button id="music-toggle" onclick="toggleMusic()" class="hidden fixed top-5 right-5 z-50 glass-premium w-12 h-12 rounded-full flex items-center justify-center text-xl active:scale-90 transition-transform shadow-lg border border-white/60 text-pink-600">
+        🔊
+    </button>
+
+    <div id="particles-container"></div>
+
+    <!-- MAIN APP CONTAINER -->
+    <main class="relative w-full max-w-4xl mx-auto">
+
+        <!-- SCREEN 1: Welcome -->
+        <section id="welcome-screen" class="screen active">
+            <div class="glass-premium p-10 md:p-14 text-center max-w-lg w-full">
+                <h1 id="typing-text" class="text-4xl md:text-6xl font-bold text-gradient mb-8 min-h-[4.5rem] typing-cursor serif-font leading-tight py-2"></h1>
+                <p class="text-lg text-gray-700 font-light mb-8 opacity-80">A little something just for you...</p>
+                <button onclick="startExperience()" class="btn-premium font-semibold py-4 px-10 rounded-full text-lg tracking-wide uppercase">
+                    Open My Heart 💌
+                </button>
+            </div>
+        </section>
+
+        <!-- SCREEN 2: The Letter -->
+        <section id="letter-screen" class="screen">
+            <div class="glass-premium p-10 md:p-14 max-w-2xl w-full text-center space-y-8">
+                <p class="text-xl md:text-2xl font-medium text-gray-800 leading-relaxed stagger-text" style="animation-delay: 0.3s;">
+                    "It's only been two days..."
+                </p>
+                <p class="text-xl md:text-2xl font-medium text-gray-800 leading-relaxed stagger-text" style="animation-delay: 1.2s;">
+                    "But somehow it already feels too long."
+                </p>
+                <p class="text-lg md:text-xl text-gray-600 leading-relaxed font-light stagger-text" style="animation-delay: 2.2s;">
+                    I miss your smile, your laugh, your voice, and everything that makes my day brighter.
+                </p>
+                <div class="py-4">
+                    <p class="text-3xl md:text-4xl serif-font text-gradient italic stagger-text leading-tight" style="animation-delay: 3.5s;">
+                        Distance is temporary, my love. I'll be counting the moments until I see you again. ❤️
+                    </p>
+                </div>
+                
+                <div class="pt-6 stagger-text" style="animation-delay: 5s;">
+                    <button onclick="navigate('delhi-screen')" class="btn-premium font-semibold py-3 px-8 rounded-full text-lg tracking-wide">
+                        Your Delhi Trip 🕌
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCREEN 2.5: Delhi Trip (Polaroids) -->
+        <section id="delhi-screen" class="screen pb-12">
+            <div class="glass-premium px-8 py-4 rounded-full mb-6 mt-8 md:mt-0 inline-block shadow-lg">
+                <h2 class="text-3xl md:text-4xl font-bold text-gradient">Your Delhi Memories Day-1✨</h2>
+            </div>
+            <p class="text-lg md:text-xl text-gray-700 font-light mb-10 text-center px-4 stagger-text">I still can't get over how gorgeous you looked...</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 w-full max-w-4xl px-4">
+                <!-- Polaroid 1 -->
+                <div class="polaroid transform rotate-[-4deg] stagger-text" style="animation-delay: 0.2s;">
+                    <div class="w-full aspect-[3/4] bg-gray-100 rounded-xl overflow-hidden mb-5 border border-black/5 relative shadow-inner">
+                        <!-- Replace src with your image -->
+                        <img src="img-1.jpg" alt="Delhi memory 1" class="object-cover w-full h-full hover:scale-105 transition-transform duration-700" />
+                    </div>
+                    <p class="serif-font italic text-2xl text-pink-700 text-center font-medium">Your smile was brighter than the sun that day. ☀️</p>
+                </div>
+
+                <!-- Polaroid 2 -->
+                <div class="polaroid transform rotate-[3deg] md:mt-12 stagger-text" style="animation-delay: 0.4s;">
+                    <div class="w-full aspect-[3/4] bg-gray-100 rounded-xl overflow-hidden mb-5 border border-black/5 relative shadow-inner">
+                        <!-- Replace src with your image -->
+                        <img src="img-2.jpg" alt="Delhi memory 2" class="object-cover w-full h-full hover:scale-105 transition-transform duration-700" />
+                    </div>
+                    <p class="serif-font italic text-2xl text-purple-700 text-center font-medium">I couldn't take my eyes off you. Breathtaking. 😍</p>
+                </div>
+            </div>
+
+            <div class="mt-14 stagger-text" style="animation-delay: 0.8s;">
+                <button onclick="navigate('reasons-screen')" class="btn-premium font-semibold py-3 px-8 rounded-full text-lg tracking-wide">
+                    More Reasons I Miss You 🌸
+                </button>
+            </div>
+        </section>
+
+        <!-- SCREEN 3: Interactive Memories (Flip Cards) -->
+        <section id="reasons-screen" class="screen">
+            <div class="glass-premium px-8 py-4 rounded-full mb-10 mt-4 md:mt-0 inline-block shadow-lg">
+                <h2 class="text-3xl md:text-4xl font-bold text-gradient">Things I Miss...</h2>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4 md:gap-6 w-full max-w-2xl px-4">
+                <!-- Card 1 -->
+                <div class="flip-card h-40 md:h-48 stagger-text" style="animation-delay: 0.1s;" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner shadow-xl rounded-[1.5rem]">
+                        <div class="flip-card-front glass-premium border-white/70">
+                            <span class="text-xl font-semibold text-pink-700 tracking-wide">Tap me ✨</span>
+                        </div>
+                        <div class="flip-card-back glass-premium">
+                            <span class="text-lg md:text-xl font-medium text-purple-900 leading-snug">The way your eyes light up when you smile.</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="flip-card h-40 md:h-48 stagger-text" style="animation-delay: 0.2s;" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner shadow-xl rounded-[1.5rem]">
+                        <div class="flip-card-front glass-premium border-white/70">
+                            <span class="text-xl font-semibold text-pink-700 tracking-wide">Tap me 🎵</span>
+                        </div>
+                        <div class="flip-card-back glass-premium">
+                            <span class="text-lg md:text-xl font-medium text-purple-900 leading-snug">Hearing your voice and your contagious laugh.</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="flip-card h-40 md:h-48 stagger-text" style="animation-delay: 0.3s;" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner shadow-xl rounded-[1.5rem]">
+                        <div class="flip-card-front glass-premium border-white/70">
+                            <span class="text-xl font-semibold text-pink-700 tracking-wide">Tap me 🌅</span>
+                        </div>
+                        <div class="flip-card-back glass-premium">
+                            <span class="text-lg md:text-xl font-medium text-purple-900 leading-snug">Our cozy little moments doing absolutely nothing.</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="flip-card h-40 md:h-48 stagger-text" style="animation-delay: 0.4s;" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner shadow-xl rounded-[1.5rem]">
+                        <div class="flip-card-front glass-premium border-white/70">
+                            <span class="text-xl font-semibold text-pink-700 tracking-wide">Tap me ☕</span>
+                        </div>
+                        <div class="flip-card-back glass-premium">
+                            <span class="text-lg md:text-xl font-medium text-purple-900 leading-snug">Just having my favorite person right next to me.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 stagger-text" style="animation-delay: 0.8s;">
+                <button onclick="triggerHug()" class="btn-premium font-semibold py-4 px-10 rounded-full text-xl flex items-center gap-3">
+                    Send You a Virtual Hug 🤗
+                </button>
+            </div>
+        </section>
+
+        <!-- SCREEN 4: Final Celebration -->
+        <section id="hug-screen" class="screen">
+            <div class="text-center flex flex-col items-center">
+                <div class="heartbeat text-9xl md:text-[10rem] mb-12">
+                    💖
+                </div>
+                <div class="glass-premium p-8 md:p-12 max-w-md mx-4">
+                    <h2 class="text-4xl serif-font text-gradient font-bold mb-4">Hug Delivered!</h2>
+                    <p class="text-xl text-gray-700 font-light leading-relaxed">
+                        Wrapped tight with all my love. Come back to me soon! 
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // --- Premium Cinematic Navigation ---
+        function navigate(targetScreenId) {
+            const currentScreen = document.querySelector('.screen.active');
+            if(!currentScreen) return;
+            
+            // Trigger exit animation
+            currentScreen.classList.remove('active');
+            currentScreen.classList.add('fade-out');
+            
+            setTimeout(() => {
+                currentScreen.classList.remove('fade-out');
+                currentScreen.style.display = 'none'; // Ensure it's out of flow
+                
+                // Trigger entrance animation for next screen
+                const nextScreen = document.getElementById(targetScreenId);
+                nextScreen.style.display = 'flex'; // Bring back into flow
+                // Force reflow
+                void nextScreen.offsetWidth;
+                nextScreen.classList.add('active');
+
+                // Reset stagger text animations cleanly
+                const elements = nextScreen.querySelectorAll('.stagger-text');
+                elements.forEach(el => {
+                    el.style.animation = 'none';
+                    void el.offsetWidth; /* trigger reflow */
+                    el.style.animation = null; 
+                });
+                
+                // Smooth scroll to top on mobile
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+            }, 600); // Matches cinematicHide CSS timing
+        }
+
+        // --- Typing Effect ---
+        const textToType = "I Miss You So Much ❤️";
+        const typingSpeed = 90; // Slightly faster for a snappier feel
+        let charIndex = 0;
+
+        function typeWriter() {
+            const typingElement = document.getElementById('typing-text');
+            if (charIndex < textToType.length) {
+                typingElement.innerHTML += textToType.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriter, typingSpeed);
+            } else {
+                typingElement.classList.remove('typing-cursor');
+            }
+        }
+
+        window.onload = () => {
+            setTimeout(typeWriter, 400);
+            startFloatingParticles();
+        };
+
+        // --- Floating Premium Particles ---
+        const emojis = ['🤍', '🌸', '✨', '💖', '🫧'];
+        const particlesContainer = document.getElementById('particles-container');
+
+        function createParticle() {
+            const particle = document.createElement('div');
+            // Simplified classes, using CSS for the heavy lifting
+            particle.classList.add('particle');
+            
+            particle.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            particle.style.left = Math.random() * 100 + 'vw';
+            
+            const duration = Math.random() * 10 + 12; // Slower, softer float
+            particle.style.animationDuration = duration + 's';
+            
+            const scale = Math.random() * 0.6 + 0.8;
+            particle.style.transform = `scale(${scale})`;
+
+            // Interactive pop
+            particle.onclick = function(e) {
+                e.preventDefault(); 
+                this.innerText = '💝'; 
+                this.style.transform = 'scale(1.8)';
+                this.style.opacity = '0';
+                setTimeout(() => this.remove(), 300);
+            };
+
+            particlesContainer.appendChild(particle);
+
+            setTimeout(() => {
+                particle.remove();
+            }, duration * 1000);
+        }
+
+        function startFloatingParticles() {
+            setInterval(createParticle, 1000); // Less cluttered, more elegant spacing
+            for(let i=0; i<4; i++) {
+                setTimeout(createParticle, i * 400);
+            }
+        }
+
+        // --- iOS Safe Audio Logic ---
+        const bgMusic = document.getElementById('bg-music');
+        const musicToggleBtn = document.getElementById('music-toggle');
+        let isMusicPlaying = false;
+
+        function startExperience() {
+            // Unblock UI immediately
+            navigate('letter-screen');
+
+            // Handle Audio Safely
+            if (bgMusic) {
+                bgMusic.volume = 0.35; 
+                const playPromise = bgMusic.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        isMusicPlaying = true;
+                        musicToggleBtn.innerText = '🔊';
+                        musicToggleBtn.classList.remove('hidden');
+                    }).catch(error => {
+                        console.log("Audio auto-play blocked by iOS:", error);
+                        isMusicPlaying = false;
+                        musicToggleBtn.innerText = '🔇';
+                        musicToggleBtn.classList.remove('hidden');
+                    });
+                }
+            }
+        }
+
+        function toggleMusic() {
+            if (!bgMusic) return;
+            
+            if (isMusicPlaying) {
+                bgMusic.pause();
+                isMusicPlaying = false;
+                musicToggleBtn.innerText = '🔇';
+            } else {
+                bgMusic.play().then(() => {
+                    isMusicPlaying = true;
+                    musicToggleBtn.innerText = '🔊';
+                }).catch(e => console.log("Audio play error:", e));
+            }
+        }
+
+        // --- Elegant Virtual Hug & Confetti ---
+        function triggerHug() {
+            navigate('hug-screen');
+            setTimeout(shootConfetti, 500); // Delay confetti to match screen reveal
+        }
+
+        function shootConfetti() {
+            // Premium pastel colors
+            const colors = ['#FDA4AF', '#F9A8D4', '#FBCFE8', '#E9D5FF', '#FDF4FF', '#D8B4FE'];
+            for (let i = 0; i < 80; i++) {
+                createConfettiPiece(colors[Math.floor(Math.random() * colors.length)]);
+            }
+        }
+
+        function createConfettiPiece(color) {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.top = -20 + 'px';
+            
+            // Randomly assign shape (circles or classic rectangles)
+            const isCircle = Math.random() > 0.5;
+            confetti.style.width = isCircle ? '12px' : '8px';
+            confetti.style.height = isCircle ? '12px' : '18px';
+            confetti.style.borderRadius = isCircle ? '50%' : '2px';
+            
+            confetti.style.backgroundColor = color;
+            confetti.style.boxShadow = `0 2px 5px ${color}80`; // Add slight glow to confetti
+            
+            const duration = Math.random() * 2.5 + 2;
+            const delay = Math.random() * 1.5;
+            confetti.style.animationDuration = duration + 's';
+            confetti.style.animationDelay = delay + 's';
+            
+            document.body.appendChild(confetti);
+            
+            setTimeout(() => {
+                confetti.remove();
+            }, (duration + delay) * 1000);
+        }
+    </script>
+</body>
+</html>
